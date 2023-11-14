@@ -1,0 +1,20 @@
+.root {
+  width: 580px;
+  height: 250px;
+  display: flex;
+
+  &_imageBlock {
+    width: 200px;
+    height: 200px;
+
+    &_image {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  &_info {
+    width: 350px;
+    height: 200px;
+  }
+}
