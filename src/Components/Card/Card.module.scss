@@ -2,6 +2,7 @@
   width: 580px;
   height: 250px;
   display: flex;
+  padding: 20px;
 
   &_imageBlock {
     width: 200px;
@@ -10,11 +11,29 @@
     &_image {
       width: 200px;
       height: 200px;
+      border-radius: 4px;
     }
   }
 
   &_info {
     width: 350px;
     height: 200px;
+    position: relative;
+
+    &_editIcon {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    &_deleteIcon {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 40px;
+      right: 0;
+    }
   }
 }
