@@ -1,20 +1,26 @@
-import {SAVE_PRODUCTS_LIST} from "../Constants";
+import { LOADING, SAVE_PRODUCTS_LIST } from '../Constants';
 
 const initialState = {
-    productList: []
+	productList: [],
+	isLoading: false
 };
 
 export default (state = initialState, action) => {
-    switch (action.type) {
-        case SAVE_PRODUCTS_LIST: {
-            return {
-                ...state,
-                productList: action.payload
-            }
+	switch (action.type) {
+		case SAVE_PRODUCTS_LIST: {
+			return {
+				...state,
+				productList: action.payload
+			};
+		}
+		case LOADING: {
+			return {
+				...state,
+				isLoading: action.payload
+			};
+		}
 
-        }
-
-        default:
-            return state;
-    }
-}
+		default:
+			return state;
+	}
+};

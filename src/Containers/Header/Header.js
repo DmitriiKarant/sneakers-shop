@@ -6,13 +6,20 @@ import BasketIcon from '../../Icons/BasketIcon';
 import MainButton from '../../Components/MainButton/MainButton';
 
 import styles from './Header.module.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Header = props => {
+	const navigate = useNavigate();
+
 	const headerButtonText = 'Перейти к покупкам';
 	const headerButtonWidth = '250px';
 	const headerButtonHeight = '60px';
 	const headerButtonBackgroundColor = '#F14F4F';
 	const headerButtonColor = '#FFFFFF';
+
+	const handleTransitShoppingClick = () => {
+		navigate('/edit');
+	};
 
 	return (
 		<div className={styles.body}>
@@ -63,6 +70,7 @@ const Header = props => {
 						text={headerButtonText}
 						color={headerButtonColor}
 						backgroundColor={headerButtonBackgroundColor}
+						onClick={handleTransitShoppingClick}
 					/>
 				</div>
 			</div>

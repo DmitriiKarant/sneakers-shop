@@ -34,8 +34,8 @@ const FilterPrice = props => {
 		setMinPrice(target.value);
 	};
 
-	console.log('minPrice', minPrice);
-	console.log('maxPrice', maxPrice);
+	// console.log('minPrice', minPrice);
+	// console.log('maxPrice', maxPrice);
 
 	return (
 		<div className={styles.priceFilter}>

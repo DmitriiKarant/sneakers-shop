@@ -7,7 +7,7 @@ import Header from '../Containers/Header/HeaderContainer';
 import styles from './App.module.scss';
 import Body from '../Containers/Body/BodyContainer';
 
-function App({ actionLoadProductList, productList }) {
+function App({ actionLoadProductList, productList, isLoading }) {
 	// const getProducts = async (products) => {
 	//   await fetch('https://654005d245bedb25bfc192e9.mockapi.io/api/v1/products').then(response => response.json()).then(json => console.log(json))
 	// }
@@ -18,13 +18,17 @@ function App({ actionLoadProductList, productList }) {
 
 	return (
 		<div className={styles.app}>
-			<Header />
-			<Body />
-			{/*<Routes>*/}
-			{/*  <Route path={'/'} element={<AdminPage/>}/>*/}
-			{/*  <Route path={'/edit'} element={<AdminEditPage/>}/>*/}
-			{/*</Routes>*/}
-			{/*  <AdminPage/>*/}
+			{isLoading && <div>Loading...</div>}
+			{!isLoading && (
+				<>
+					<Header />
+					<Routes>
+						<Route path={'/'} element={<Body />} />
+						<Route path={'/edit'} element={<AdminPage />} />
+					</Routes>
+					{/*  <AdminPage/>*/}
+				</>
+			)}
 		</div>
 	);
 }

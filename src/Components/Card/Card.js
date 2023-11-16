@@ -5,7 +5,15 @@ import styles from './Card.module.scss';
 import EditIcon from '../../Icons/EditIcon';
 import DeleteIcon from '../../Icons/DeleteIcon';
 
-const Card = ({ image, price, productName, description, size }) => {
+const Card = ({
+	id,
+	image,
+	price,
+	productName,
+	description,
+	size,
+	actionRemoveProduct
+}) => {
 	return (
 		<div className={styles.root}>
 			<div className={styles.root_imageBlock}>
@@ -23,7 +31,10 @@ const Card = ({ image, price, productName, description, size }) => {
 				<div className={styles.root_info_editIcon}>
 					<EditIcon />
 				</div>
-				<div className={styles.root_info_deleteIcon}>
+				<div
+					className={styles.root_info_deleteIcon}
+					onClick={() => actionRemoveProduct(id)}
+				>
 					<DeleteIcon />
 				</div>
 			</div>

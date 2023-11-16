@@ -1,11 +1,25 @@
-import {MIDDLEWARE_PRODUCTS_LIST_LOAD, SAVE_PRODUCTS_LIST} from "../Constants";
+import {
+	LOADING,
+	MIDDLEWARE_PRODUCTS_LIST_LOAD,
+	MIDDLEWARE_REMOVE_PRODUCT,
+	SAVE_PRODUCTS_LIST
+} from '../Constants';
 
 export const getProductList = () => ({
-    type: MIDDLEWARE_PRODUCTS_LIST_LOAD,
-})
+	type: MIDDLEWARE_PRODUCTS_LIST_LOAD
+});
 
-export const saveProductList = (data) => (
-    {
-        type: SAVE_PRODUCTS_LIST,
-        payload: data
-    })
+export const saveProductList = data => ({
+	type: SAVE_PRODUCTS_LIST,
+	payload: data
+});
+
+export const removeProduct = id => ({
+	type: MIDDLEWARE_REMOVE_PRODUCT,
+	payload: id
+});
+
+export const loading = loadData => ({
+	type: LOADING,
+	payload: loadData
+});
