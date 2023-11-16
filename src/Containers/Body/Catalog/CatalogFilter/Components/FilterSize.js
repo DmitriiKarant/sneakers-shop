@@ -7,11 +7,14 @@ const sizeArray = [35, 36, 37, 38, 39, 40, 41, 42, 43];
 
 const FilterSize = props => {
 	return (
-		<div className={styles.sizeFilter}>
-			{sizeArray.map(size => (
-				<div className={styles.sizeFilter__card}>{size}</div>
-			))}
-		</div>
+		<>
+			<div className={styles.sizeFilterTitle}>Размер</div>
+			<div className={styles.sizeFilter}>
+				{sizeArray.map(size => (
+					<div className={styles.sizeFilter__card}>{size}</div>
+				))}
+			</div>
+		</>
 	);
 };
 
