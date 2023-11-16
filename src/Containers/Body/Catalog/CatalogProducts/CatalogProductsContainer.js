@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import Body from './Body';
+import CatalogProducts from './CatalogProducts';
 
 function mapStateToProps(state) {
 	return {
@@ -11,4 +11,4 @@ function mapDispatchToProps(dispatch) {
 	return {};
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Body);
+export default connect(mapStateToProps, mapDispatchToProps)(CatalogProducts);

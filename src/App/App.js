@@ -3,8 +3,9 @@ import AdminPage from '../Containers/AdminPage/AdminPageContainer';
 import AdminEditPage from '../Containers/AdminEditPage/AdminEditPage';
 
 import { useEffect } from 'react';
-import Body from '../Containers/Body/BodyContainer';
+import Header from '../Containers/Header/HeaderContainer';
 import styles from './App.module.scss';
+import Body from '../Containers/Body/BodyContainer';
 
 function App({ actionLoadProductList, productList }) {
 	// const getProducts = async (products) => {
@@ -17,6 +18,7 @@ function App({ actionLoadProductList, productList }) {
 
 	return (
 		<div className={styles.app}>
+			<Header />
 			<Body />
 			{/*<Routes>*/}
 			{/*  <Route path={'/'} element={<AdminPage/>}/>*/}

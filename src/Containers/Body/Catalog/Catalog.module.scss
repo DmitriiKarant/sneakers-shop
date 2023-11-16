@@ -1,0 +1,14 @@
+.root {
+
+  &__title {
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 700;
+    //text-align: left;
+  }
+
+  &__body {
+    display: flex;
+    justify-content: center;
+  }
+}
