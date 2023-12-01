@@ -8,18 +8,40 @@ const FilterPrice = props => {
 	let [maxPrice, setMaxPrice] = useState(500);
 	const minGap = 10;
 
-	// if (parseInt(maxPrice) - parseInt(minPrice) <= minGap) {
-	// 	// setMinPrice(() => {
-	// 	// 	return maxPrice - minGap;
-	// 	// });
-	// 	return (minPrice = parseInt(maxPrice) - minGap);
+	// function diffMin() {
+	// 	if (parseInt(maxPrice) - parseInt(minPrice) < minGap) {
+	// 		setMinPrice(() => {
+	// 			return (minPrice = maxPrice - minGap);
+	// 		});
+	// 	}
 	// }
 	//
+	// function diffMax() {
+	// 	if (parseInt(maxPrice) - parseInt(minPrice) < minGap) {
+	// 		setMaxPrice(() => {
+	// 			return (maxPrice = parseInt(minPrice) + minGap);
+	// 		});
+	// 	}
+	// }
+
 	// if (parseInt(maxPrice) - parseInt(minPrice) <= minGap) {
-	// 	// setMinPrice(() => {
-	// 	// 	return maxPrice - minGap;
-	// 	// });
-	// 	return (maxPrice = parseInt(minPrice) + minGap);
+	// 	if (1) {
+	// 		minPrice = maxPrice - minGap;
+	// 	} else {
+	// 		maxPrice = maxPrice - minGap;
+	// 	}
+	// }
+
+	if (minPrice < 0) {
+		minPrice = 0;
+	}
+	if (maxPrice - minPrice < minGap) {
+		minPrice = parseInt(maxPrice) - minGap;
+		maxPrice = parseInt(minPrice) + minGap;
+	}
+
+	// if (maxPrice - minPrice < minGap) {
+	// 	maxPrice = parseInt(minPrice) + minGap;
 	// }
 
 	const handleChangeMinPrice = ({ target }) => {
@@ -47,6 +69,7 @@ const FilterPrice = props => {
 				value={minPrice}
 				id='slider-min'
 				onChange={handleChangeMinPrice}
+				// onInput={diffMin()}
 			/>
 			<input
 				type='range'
@@ -55,6 +78,7 @@ const FilterPrice = props => {
 				value={maxPrice}
 				id='slider-max'
 				onChange={handleChangeMaxPrice}
+				// onInput={diffMax()}
 			/>
 			<input
 				type='number'

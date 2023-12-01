@@ -2,6 +2,7 @@ import {
 	LOADING,
 	MIDDLEWARE_PRODUCTS_LIST_LOAD,
 	MIDDLEWARE_REMOVE_PRODUCT,
+	MIDDLEWARE_ADD_PRODUCT,
 	SAVE_PRODUCTS_LIST
 } from '../Constants';
 
@@ -17,6 +18,11 @@ export const saveProductList = data => ({
 export const removeProduct = id => ({
 	type: MIDDLEWARE_REMOVE_PRODUCT,
 	payload: id
+});
+
+export const addProduct = newProduct => ({
+	type: MIDDLEWARE_ADD_PRODUCT,
+	payload: newProduct
 });
 
 export const loading = loadData => ({

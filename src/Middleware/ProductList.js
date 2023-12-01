@@ -1,7 +1,8 @@
 import axios from 'axios';
 import {
 	MIDDLEWARE_PRODUCTS_LIST_LOAD,
-	MIDDLEWARE_REMOVE_PRODUCT
+	MIDDLEWARE_REMOVE_PRODUCT,
+	MIDDLEWARE_ADD_PRODUCT
 } from '../Constants';
 import {
 	getProductList,
@@ -18,16 +19,14 @@ const getProducts =
 
 		switch (action.type) {
 			case MIDDLEWARE_PRODUCTS_LIST_LOAD:
-				{
-					try {
-						const response = await axios.get(baseURL);
-						dispatch(saveProductList(response.data));
-					} catch (error) {
-						console.log(MIDDLEWARE_PRODUCTS_LIST_LOAD);
-					}
+				try {
+					const response = await axios.get(baseURL);
+					dispatch(saveProductList(response.data));
+				} catch (error) {
+					console.log(MIDDLEWARE_PRODUCTS_LIST_LOAD);
 				}
 				break;
-			case MIDDLEWARE_REMOVE_PRODUCT: {
+			case MIDDLEWARE_REMOVE_PRODUCT:
 				console.log(action.payload);
 				try {
 					dispatch(loading(true));
@@ -40,7 +39,19 @@ const getProducts =
 				} catch (error) {
 					console.log(MIDDLEWARE_REMOVE_PRODUCT);
 				}
-			}
+				break;
+			case MIDDLEWARE_ADD_PRODUCT:
+				console.log(action.payload);
+				try {
+					dispatch(loading(true));
+					await axios.post(`${baseURL}`, action.payload);
+					dispatch(loading(false));
+
+					dispatch(getProductList());
+				} catch (error) {
+					console.log(MIDDLEWARE_ADD_PRODUCT);
+				}
+				break;
 			default: {
 				next(action);
 			}

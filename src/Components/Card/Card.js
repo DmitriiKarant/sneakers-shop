@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from './Card.module.scss';
 import EditIcon from '../../Icons/EditIcon';
 import DeleteIcon from '../../Icons/DeleteIcon';
+
+import styles from './Card.module.scss';
 
 const Card = ({
 	id,
@@ -12,6 +13,7 @@ const Card = ({
 	productName,
 	description,
 	size,
+	handleModalOpenClick,
 	actionRemoveProduct
 }) => {
 	return (
@@ -25,10 +27,13 @@ const Card = ({
 			</div>
 			<div className={styles.root_info}>
 				<p>{productName}</p>
-				<p>{description}</p>
-				<p>Size: {size}</p>
+				{/*<p>{description}</p>*/}
+				{/*<p>Size: {size}</p>*/}
 				<p>{price} р</p>
-				<div className={styles.root_info_editIcon}>
+				<div
+					className={styles.root_info_editIcon}
+					onClick={handleModalOpenClick}
+				>
 					<EditIcon />
 				</div>
 				<div
