@@ -4,33 +4,22 @@ import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 
 import Card from '../../Components/Card/Card';
-import Modal from './Modal/Modal';
 import PlusIcon from '../../Icons/PlusIcon';
-import Input from './Input/Input';
-import MainButton from '../../Components/MainButton/MainButton';
+import ModalAddProduct from '../../Components/ModalAddProduct/ModalAddProduct';
 
 import styles from './AdminPage.module.scss';
 
-const AdminPage = ({ productList, actionRemoveProduct, actionAddProduct }) => {
-	const [newProduct, setNewProduct] = useState({ productName: '', price: 0 });
+const AdminPage = ({
+	productList,
+	actionRemoveProduct,
+	actionAddProduct,
+	actionUpdateProduct
+}) => {
 	const [loading, setLoading] = useState(true);
-	const [modalActive, setModalActive] = useState(false);
+	const [openAddModal, setOpenAddModal] = useState(false);
 	const navigate = useNavigate();
-	console.log(productList);
 
-	const modalInputProductNameType = 'text';
-	const modalInputProductNamePlaceholder = 'название';
-	const modalInputProductNameElement = 'productName';
-
-	const modalInputProductPriceType = 'number';
-	const modalInputProductPricePlaceholder = 'цена';
-	const modalInputPriceElement = 'price';
-
-	const modalButtonWidth = '220px';
-	const modalButtonHeight = '60px';
-	const modalButtonText = 'Добавить товар';
-	const modalButtonBackgroundColor = '#F14F4F';
-	const modalButtonColor = '#FFFFFF';
+	// console.log(productList);
 
 	useEffect(() => {
 		productList.length && setLoading(false);
@@ -40,19 +29,15 @@ const AdminPage = ({ productList, actionRemoveProduct, actionAddProduct }) => {
 		navigate('/');
 	};
 
-	const handleModalOpenClick = () => {
-		setModalActive(true);
-	};
-
-	const handleModalButtonClick = () => {
-		actionAddProduct(newProduct);
+	const handleAddModalOpenClick = () => {
+		setOpenAddModal(true);
 	};
 
 	return (
 		<div className={styles.root}>
 			<div
 				className={styles.root__plusIcon}
-				onClick={handleModalOpenClick}
+				onClick={handleAddModalOpenClick}
 			>
 				<PlusIcon />
 			</div>
@@ -70,34 +55,18 @@ const AdminPage = ({ productList, actionRemoveProduct, actionAddProduct }) => {
 							size={prod.size}
 							key={prod.id}
 							actionRemoveProduct={actionRemoveProduct}
-							// handleModalOpenClick={handleModalOpenClick}
+							actionUpdateProduct={actionUpdateProduct}
 						/>
 					);
 				})
 			)}
 			<button onClick={handleExitButtonClick}>exit</button>
-			<Modal active={modalActive} setActive={setModalActive}>
-				<Input
-					type={modalInputProductNameType}
-					placeholder={modalInputProductNamePlaceholder}
-					element={modalInputProductNameElement}
-					setNewProduct={setNewProduct}
+			{openAddModal && (
+				<ModalAddProduct
+					setOpenAddModal={setOpenAddModal}
+					actionAddProduct={actionAddProduct}
 				/>
-				<Input
-					type={modalInputProductPriceType}
-					placeholder={modalInputProductPricePlaceholder}
-					element={modalInputPriceElement}
-					setNewProduct={setNewProduct}
-				/>
-				<MainButton
-					width={modalButtonWidth}
-					height={modalButtonHeight}
-					text={modalButtonText}
-					backgroundColor={modalButtonBackgroundColor}
-					color={modalButtonColor}
-					onClick={handleModalButtonClick}
-				/>
-			</Modal>
+			)}
 		</div>
 	);
 };

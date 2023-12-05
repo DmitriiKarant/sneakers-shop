@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import AdminPage from './AdminPage';
-import { removeProduct, addProduct } from '../../Actions/ProductList';
+import {
+	removeProduct,
+	addProduct,
+	updateProduct
+} from '../../Actions/ProductList';
 
 function mapStateToProps(state) {
 	return {
@@ -11,7 +15,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
 	return {
 		actionRemoveProduct: id => dispatch(removeProduct(id)),
-		actionAddProduct: newProduct => dispatch(addProduct(newProduct))
+		actionAddProduct: newProduct => dispatch(addProduct(newProduct)),
+		actionUpdateProduct: (updatedProduct, id) =>
+			dispatch(updateProduct(updatedProduct, id))
 	};
 }
 

@@ -3,7 +3,8 @@ import {
 	MIDDLEWARE_PRODUCTS_LIST_LOAD,
 	MIDDLEWARE_REMOVE_PRODUCT,
 	MIDDLEWARE_ADD_PRODUCT,
-	SAVE_PRODUCTS_LIST
+	SAVE_PRODUCTS_LIST,
+	MIDDLEWARE_UPDATE_PRODUCT
 } from '../Constants';
 
 export const getProductList = () => ({
@@ -23,6 +24,11 @@ export const removeProduct = id => ({
 export const addProduct = newProduct => ({
 	type: MIDDLEWARE_ADD_PRODUCT,
 	payload: newProduct
+});
+
+export const updateProduct = (updatedProduct, id) => ({
+	type: MIDDLEWARE_UPDATE_PRODUCT,
+	payload: { updatedProduct, id }
 });
 
 export const loading = loadData => ({

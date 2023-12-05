@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 
 import styles from './Input.module.scss';
 
-const Input = ({ type, placeholder, element, setNewProduct }) => {
+const Input = ({ value, type, placeholder, element, setProduct }) => {
 	const handleChange = ({ target }) => {
-		setNewProduct(prevState => ({
+		setProduct(prevState => ({
 			...prevState,
-			// productName: target.value
 			[element]: target.value
 		}));
 	};
@@ -15,6 +14,7 @@ const Input = ({ type, placeholder, element, setNewProduct }) => {
 	return (
 		<div className={styles.root}>
 			<input
+				value={value}
 				className={styles.root__input}
 				type={type}
 				placeholder={placeholder}

@@ -35,10 +35,15 @@ const FilterPrice = props => {
 	if (minPrice < 0) {
 		minPrice = 0;
 	}
-	if (maxPrice - minPrice < minGap) {
-		minPrice = parseInt(maxPrice) - minGap;
-		maxPrice = parseInt(minPrice) + minGap;
-	}
+
+	// if (maxPrice - minPrice < minGap) {
+	// minPrice = parseInt(maxPrice) - minGap;
+	// maxPrice = parseInt(minPrice) + minGap;
+	// }
+	// if (maxPrice - minPrice < minGap) {
+	// 	maxPrice = parseInt(minPrice) + minGap;
+	// 	minPrice = parseInt(maxPrice) - minGap;
+	// }
 
 	// if (maxPrice - minPrice < minGap) {
 	// 	maxPrice = parseInt(minPrice) + minGap;
@@ -46,34 +51,51 @@ const FilterPrice = props => {
 
 	const handleChangeMinPrice = ({ target }) => {
 		setMinPrice(target.value);
+		// if (maxPrice - minPrice > minGap) {
+		// } else {
+		// 	setMinPrice(maxPrice - minGap);
+		// }
+		// if (maxPrice - minPrice < minGap) {
+		// 	// setMaxPrice(parseInt(minPrice) + minGap);
+		// 	setMinPrice(maxPrice - minGap);
+		// }
 	};
 
 	const handleChangeMaxPrice = ({ target }) => {
 		setMaxPrice(target.value);
+		// if (maxPrice - minPrice < minGap) {
+		// 	// setMinPrice(parseInt(maxPrice) - minGap);
+		// 	setMaxPrice(minPrice + minGap);
+		// }
+		// console.log('minPrice', minPrice);
+		// console.log('maxPrice', maxPrice);
 	};
 
 	const handleChangeInputMin = ({ target }) => {
 		setMinPrice(target.value);
 	};
 
-	// console.log('minPrice', minPrice);
-	// console.log('maxPrice', maxPrice);
+	console.log('minPrice', minPrice);
+	console.log('maxPrice', maxPrice);
+	// console.log(240 - (minPrice * 240) / 500);
 
 	return (
 		<div className={styles.priceFilter}>
 			<div className={styles.sliderTrack}></div>
 			<input
+				// style={{ width: (maxPrice / 500) * 240 }}
 				type='range'
 				min='0'
-				max='500'
+				max={minPrice > maxPrice ? maxPrice : 500}
 				value={minPrice}
 				id='slider-min'
 				onChange={handleChangeMinPrice}
+				aria-disabled={true}
 				// onInput={diffMin()}
 			/>
 			<input
 				type='range'
-				min='0'
+				min={0}
 				max='500'
 				value={maxPrice}
 				id='slider-max'

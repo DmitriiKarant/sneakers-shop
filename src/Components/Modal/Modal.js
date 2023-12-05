@@ -3,24 +3,26 @@ import PropTypes from 'prop-types';
 
 import cns from 'classnames';
 
-import styles from './Modal.module.scss';
-import PlusIcon from '../../../Icons/PlusIcon';
+import PlusIcon from '../../Icons/PlusIcon';
 
-const Modal = ({ active, setActive, children }) => {
+import styles from './Modal.module.scss';
+
+export const Modal = ({ active, children, modalClose }) => {
 	const handleModalCloseClick = () => {
-		setActive(false);
+		modalClose(false);
 	};
+
 	return (
 		<div
 			className={cns(styles.root, active && styles.root_active)}
-			onClick={handleModalCloseClick}
+			onMouseDown={handleModalCloseClick}
 		>
 			<div
 				className={cns(
 					styles.root__content,
 					active && styles.root__contentActive
 				)}
-				onClick={e => e.stopPropagation()}
+				onMouseDown={e => e.stopPropagation()}
 			>
 				<div className={styles.xIcon} onClick={handleModalCloseClick}>
 					<PlusIcon />

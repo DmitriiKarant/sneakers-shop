@@ -2,7 +2,8 @@ import axios from 'axios';
 import {
 	MIDDLEWARE_PRODUCTS_LIST_LOAD,
 	MIDDLEWARE_REMOVE_PRODUCT,
-	MIDDLEWARE_ADD_PRODUCT
+	MIDDLEWARE_ADD_PRODUCT,
+	MIDDLEWARE_UPDATE_PRODUCT
 } from '../Constants';
 import {
 	getProductList,
@@ -50,6 +51,21 @@ const getProducts =
 					dispatch(getProductList());
 				} catch (error) {
 					console.log(MIDDLEWARE_ADD_PRODUCT);
+				}
+				break;
+			case MIDDLEWARE_UPDATE_PRODUCT:
+				console.log(action.payload);
+				try {
+					dispatch(loading(true));
+					await axios.put(
+						`${baseURL}/${action.payload.id}`,
+						action.payload.updatedProduct
+					);
+					dispatch(loading(false));
+
+					dispatch(getProductList());
+				} catch (error) {
+					console.log(MIDDLEWARE_UPDATE_PRODUCT);
 				}
 				break;
 			default: {
