@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 
 import EditIcon from '../../Icons/EditIcon';
 import DeleteIcon from '../../Icons/DeleteIcon';
-
-import styles from './Card.module.scss';
 import ModalDeleteConfirm from '../ModalDeleteConfirm/ModalDeleteConfirm';
 import ModalUpdateProduct from '../ModalUpdateProduct/ModalUpdateProduct';
+
+import styles from './Card.module.scss';
 
 const Card = ({
 	id,

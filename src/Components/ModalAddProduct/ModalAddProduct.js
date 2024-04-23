@@ -27,6 +27,7 @@ const ModalAddProduct = ({ setOpenAddModal, actionAddProduct }) => {
 
 	return (
 		<Modal active={true} modalClose={setOpenAddModal}>
+			<h3>Добавление товара</h3>
 			<Input
 				type={modalInputProductNameType}
 				placeholder={modalInputProductNamePlaceholder}

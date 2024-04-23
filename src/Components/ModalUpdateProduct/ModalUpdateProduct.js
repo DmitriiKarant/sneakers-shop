@@ -36,6 +36,7 @@ const ModalUpdateProduct = ({
 
 	return (
 		<Modal active={true} modalClose={setOpenUpdateModal}>
+			<h3>Изменение товара</h3>
 			<Input
 				value={updatedProduct.productName}
 				type={modalInputProductNameType}

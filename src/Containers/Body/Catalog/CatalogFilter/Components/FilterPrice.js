@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from '../CatalogFilter.module.scss';
+import InputDoubleRange from './InputDoubleRange/InputDoubleRange';
 
 const FilterPrice = props => {
 	let [minPrice, setMinPrice] = useState(0);
@@ -28,8 +29,13 @@ const FilterPrice = props => {
 	// 	if (1) {
 	// 		minPrice = maxPrice - minGap;
 	// 	} else {
-	// 		maxPrice = maxPrice - minGap;
+	// 		maxPrice = minPrice + minGap;
 	// 	}
+	// }
+
+	// if (parseInt(maxPrice) - parseInt(minPrice) <= minGap) {
+	// 	(minPrice = parseInt(maxPrice) - minGap) &&
+	// 		(maxPrice = parseInt(minPrice) + minGap);
 	// }
 
 	if (minPrice < 0) {
@@ -81,27 +87,28 @@ const FilterPrice = props => {
 
 	return (
 		<div className={styles.priceFilter}>
-			<div className={styles.sliderTrack}></div>
-			<input
-				// style={{ width: (maxPrice / 500) * 240 }}
-				type='range'
-				min='0'
-				max={minPrice > maxPrice ? maxPrice : 500}
-				value={minPrice}
-				id='slider-min'
-				onChange={handleChangeMinPrice}
-				aria-disabled={true}
-				// onInput={diffMin()}
-			/>
-			<input
-				type='range'
-				min={0}
-				max='500'
-				value={maxPrice}
-				id='slider-max'
-				onChange={handleChangeMaxPrice}
-				// onInput={diffMax()}
-			/>
+			{/*<div className={styles.sliderTrack}></div>*/}
+			{/*<input*/}
+			{/*	// style={{ width: (maxPrice / 500) * 240 }}*/}
+			{/*	type='range'*/}
+			{/*	min='0'*/}
+			{/*	max={minPrice > maxPrice ? maxPrice : 500}*/}
+			{/*	value={minPrice}*/}
+			{/*	id='slider-min'*/}
+			{/*	onChange={handleChangeMinPrice}*/}
+			{/*	aria-disabled={true}*/}
+			{/*	// onInput={diffMin()}*/}
+			{/*/>*/}
+			{/*<input*/}
+			{/*	type='range'*/}
+			{/*	min={0}*/}
+			{/*	max='500'*/}
+			{/*	value={maxPrice}*/}
+			{/*	id='slider-max'*/}
+			{/*	onChange={handleChangeMaxPrice}*/}
+			{/*	// onInput={diffMax()}*/}
+			{/*/>*/}
+			<InputDoubleRange />
 			<input
 				type='number'
 				value={minPrice}
