@@ -2,6 +2,7 @@
   padding: 20px;
   background-color: #FFF4EE;
   margin-right: 20px;
+  color: #444B58;
 
   .title {
     font-size: 24px;
@@ -28,6 +29,40 @@
         top: 0;
         bottom: 0;
         border-radius: 4px;
+      }
+    }
+  }
+
+  .genderFilterBlock {
+    width: 240px;
+    height: 50px;
+    text-align: left;
+    margin-bottom: 20px;
+
+    .genderFilterTitle {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 16px;
+      margin-bottom: 10px;
+
+    }
+
+    .genderFilter {
+        display: flex;
+
+      .input {
+        width: 24px;
+        height: 24px;
+        border: 1px solid #DBBBA9;
+        border-radius: 4px;
+        margin-right: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .inputTextMale {
+        margin-right: 46px;
       }
     }
   }
